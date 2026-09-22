@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../praktikum2/screens/list_product_screen.dart';
+import '../praktikum3/screens/login_screen.dart';
 
 class PortalMenuScreen extends StatelessWidget {
   const PortalMenuScreen({super.key});
@@ -98,15 +99,12 @@ class PortalMenuScreen extends StatelessWidget {
               subtitle:
                   'Directus BaaS API • Dio HTTP Client • CRUD Products (GET, POST, PATCH, DELETE) • Auth & Token • Error Handling',
               icon: Icons.cloud_sync_outlined,
-              isCompleted: false,
-              badgeText: 'Siap Dikerjakan',
+              isCompleted: true,
+              badgeText: 'Aktif',
               onTap: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      'Modul Praktikum 3 siap kita buat setelah ini!',
-                    ),
-                  ),
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
             ),

@@ -11,7 +11,7 @@ Aplikasi ini menggunakan arsitektur **Modular Portal Hub**, sehingga setiap modu
 | Modul | Topik Praktikum | Status |
 | :--- | :--- | :--- |
 | **Modul 02** | **State & Data Management Review** (`setState`, Model, JSON, Local Storage) | ✅ **Selesai** |
-| **Modul 03** | **REST API & Integration Review** (Dio HTTP, Directus BaaS, CRUD Products) | 🔄 **In Progress** |
+| **Modul 03** | **REST API & Integration Review** (Dio HTTP, Directus BaaS, CRUD Products) | ✅ **Selesai** |
 | **Modul 04** | *Akan datang sesuai silabus perkuliahan mingguan* | ⏳ *Upcoming* |
 | **Modul 05+** | *Modul lanjutan semester Pemrograman Mobile 2* | ⏳ *Upcoming* |
 
@@ -95,7 +95,7 @@ lib/
 
 1. **Clone repository ini:**
    ```bash
-   git clone <URL_REPO_GITHUB_KAMU>
+   git clone https://github.com/omisetiawan/PemrogramanMobile2.git
    cd flutter_application_pos_praktikum
    ```
 
@@ -117,6 +117,9 @@ lib/
 ---
 
 ## 👨‍💻 Kontributor
-- **Mahasiswa:** Praktikan Pemrograman Mobile 2
+- **Mahasiswa:** Romi Setiawan
+- **NIM:** 2305083
+- **Mata Kuliah:** Pemrograman Mobile 2
+- **Program Studi:** Rekayasa Perangkat Lunak
 - **Tahun Akademik:** 2026
 

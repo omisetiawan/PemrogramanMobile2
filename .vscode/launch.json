@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter (Auto / Selected Device)",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "Flutter Windows Desktop",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "windows"]
+    },
+    {
+      "name": "Flutter Web (Chrome - Tanpa CORS)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["-d", "chrome", "--web-browser-flag", "--disable-web-security"]
+    }
+  ]
+}
