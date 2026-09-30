@@ -29,6 +29,9 @@ class ProductApi {
     return '$assetBaseUrl/$imageUrl';
   }
 
+  /// Format harga integer tanpa desimal
+  String get formattedPrice => price.toStringAsFixed(0);
+
   /// Deserialisasi dari JSON response Directus
   factory ProductApi.fromJson(Map<String, dynamic> json) {
     // Parsing harga (bisa berupa num atau string)

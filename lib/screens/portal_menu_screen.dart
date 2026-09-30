@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../praktikum2/screens/list_product_screen.dart';
 import '../praktikum3/screens/login_screen.dart';
+import '../praktikum4/praktikum4_root.dart';
 
 class PortalMenuScreen extends StatelessWidget {
   const PortalMenuScreen({super.key});
@@ -100,11 +101,32 @@ class PortalMenuScreen extends StatelessWidget {
                   'Directus BaaS API • Dio HTTP Client • CRUD Products (GET, POST, PATCH, DELETE) • Auth & Token • Error Handling',
               icon: Icons.cloud_sync_outlined,
               isCompleted: true,
-              badgeText: 'Aktif',
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+            ),
+
+            const SizedBox(height: 16),
+
+            // Card Praktikum 4
+            _buildModuleCard(
+              context,
+              number: '04',
+              title: 'Advance State Management - Redux',
+              subtitle:
+                  'Refactoring Praktikum 3 • Redux Store & Reducers • Thunk Middleware • StoreConnector • Unidirectional Data Flow • Reactive UI',
+              icon: Icons.account_tree_outlined,
+              isCompleted: true,
+              badgeText: 'Aktif / Baru',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Praktikum4Root(),
+                  ),
                 );
               },
             ),

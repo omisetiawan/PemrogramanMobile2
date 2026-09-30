@@ -12,7 +12,7 @@ Aplikasi ini menggunakan arsitektur **Modular Portal Hub**, sehingga setiap modu
 | :--- | :--- | :--- |
 | **Modul 02** | **State & Data Management Review** (`setState`, Model, JSON, Local Storage) | ✅ **Selesai** |
 | **Modul 03** | **REST API & Integration Review** (Dio HTTP, Directus BaaS, CRUD Products) | ✅ **Selesai** |
-| **Modul 04** | *Akan datang sesuai silabus perkuliahan mingguan* | ⏳ *Upcoming* |
+| **Modul 04** | **Advance State Management (Redux)** (Redux Store, Thunk, Pure Reducers, StoreConnector) | ✅ **Selesai** |
 | **Modul 05+** | *Modul lanjutan semester Pemrograman Mobile 2* | ⏳ *Upcoming* |
 
 ---
@@ -50,8 +50,14 @@ Integrasi komunikasi data daring dengan backend BaaS (Directus):
 
 ---
 
-### 📌 Modul 04 & Seterusnya
-Modul praktikum berikutnya akan langsung ditambahkan ke dalam folder modular dan didaftarkan pada menu `PortalMenuScreen` utama aplikasi.
+### 📌 Modul 04 — Advance State Management (Redux)
+Refactoring menyeluruh dari Praktikum 3 dengan memisahkan Business Logic dan State UI secara ketat menggunakan **Redux**:
+- **Single Source of Truth**: Seluruh state aplikasi (autentikasi dan katalog produk) tersimpan dalam satu `Store<AppState>`.
+- **Unidirectional Data Flow**: Alur data satu arah `View -> Action -> Middleware (Thunk) -> Pure Reducer -> Store -> StoreConnector -> View`.
+- **Async Side-Effects (Redux Thunk)**: Operasi asynchronous REST API (Login, Fetch, Create, Update, Delete) ditangani secara elegan via `ThunkAction<AppState>`.
+- **Separation of Concerns**: UI screens sepenuhnya murni presentational (`StatelessWidget`), berlangganan data dan mengirim action menggunakan `StoreConnector<AppState, ViewModel>`.
+- **Reactive Dashboard & Metric Counter**: Dashboard membaca state produk langsung dari Store secara instant tanpa perlu request HTTP tambahan.
+- **Comprehensive Testing**: 22 unit & integration tests yang memvalidasi pure reducers, state immutability, dan async thunk dispatching.
 
 ---
 
@@ -62,20 +68,32 @@ lib/
 ├── main.dart                          # Entry point aplikasi & tema Material 3
 ├── screens/
 │   └── portal_menu_screen.dart        # Portal Menu Utama (pemilihan modul)
-├── praktikum2/                        # Modul State & Local Data Management
-│   ├── models/
-│   │   └── product_model.dart         # Model Product, fromJson, toJson, copyWith
-│   ├── data/
-│   │   └── dummy_product.dart         # Data awal dummy produk
-│   ├── services/
-│   │   └── local_storage_service.dart # Layanan SharedPreferences (Offline Storage)
-│   ├── widgets/
-│   │   └── card_product.dart          # Komponen UI kartu produk
-│   └── screens/
-│       ├── list_product_screen.dart   # Halaman utama inventaris (4 State & Search)
-│       ├── form_product_screen.dart   # Form Tambah & Edit Produk
-│       └── detail_product_screen.dart # Halaman rincian produk
-└── praktikum3/                        # Modul REST API & Integration (Directus BaaS)
+├── praktikum2/                        # Modul State & Local Data Management (setState)
+├── praktikum3/                        # Modul REST API & Integration (Directus BaaS)
+└── praktikum4/                        # Modul Advance State Management (Redux)
+    ├── praktikum4_root.dart           # StoreProvider root wrapper
+    ├── redux/                         # Arsitektur Redux State Management
+    │   ├── app_state.dart             # Root AppState gabungan
+    │   ├── app_reducer.dart           # Root reducer murni
+    │   ├── store.dart                 # Factory Store & Thunk middleware
+    │   ├── auth/                      # Domain Autentikasi Redux
+    │   │   ├── auth_state.dart        # Imutable AuthState
+    │   │   ├── auth_actions.dart      # Action definitions
+    │   │   ├── auth_reducer.dart      # Pure AuthReducer
+    │   │   └── auth_thunks.dart       # Async login, logout, persistance thunk
+    │   └── product/                   # Domain Katalog Produk Redux
+    │       ├── product_state.dart     # Imutable ProductState (4 status states)
+    │       ├── product_actions.dart   # Action definitions
+    │       ├── product_reducer.dart   # Pure ProductReducer
+    │       └── product_thunks.dart    # Async CRUD Thunk actions
+    ├── screens/                       # Presentation layer terhubung via StoreConnector
+    │   ├── login_redux_screen.dart    # Auth screen dengan Thunk
+    │   ├── dashboard_redux_screen.dart# Reactive Dashboard
+    │   ├── product_list_redux_screen.dart # Catalog dengan 4 UI states & Search
+    │   ├── form_product_redux_screen.dart # Form Add/Edit (POST/PATCH thunk)
+    │   └── detail_product_redux_screen.dart # Detail & Delete thunk
+    └── widgets/
+        └── redux_badge.dart           # Visual indicator arsitektur Redux
 ```
 
 ---
@@ -85,8 +103,11 @@ lib/
 - **Framework**: [Flutter](https://flutter.dev/) (Channel stable, Material 3)
 - **Language**: [Dart](https://dart.dev/)
 - **Dependencies Utama**:
-  - [`shared_preferences`](https://pub.dev/packages/shared_preferences): Penyimpanan key-value lokal offline.
-  - [`dio`](https://pub.dev/packages/dio): HTTP networking client untuk REST API.
+  - [`redux`](https://pub.dev/packages/redux): Predictable state container untuk Dart.
+  - [`flutter_redux`](https://pub.dev/packages/flutter_redux): Widget bindings (`StoreProvider`, `StoreConnector`).
+  - [`redux_thunk`](https://pub.dev/packages/redux_thunk): Middleware untuk async actions.
+  - [`dio`](https://pub.dev/packages/dio): HTTP networking client untuk REST API Directus.
+  - [`shared_preferences`](https://pub.dev/packages/shared_preferences): Penyimpanan token & session lokal.
   - [`cupertino_icons`](https://pub.dev/packages/cupertino_icons): Ikon pendukung styling.
 
 ---
