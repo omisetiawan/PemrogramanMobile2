@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../praktikum2/screens/list_product_screen.dart';
 import '../praktikum3/screens/login_screen.dart';
 import '../praktikum4/praktikum4_root.dart';
+import '../praktikum5/praktikum5_menu.dart';
 
 class PortalMenuScreen extends StatelessWidget {
   const PortalMenuScreen({super.key});
@@ -120,12 +121,33 @@ class PortalMenuScreen extends StatelessWidget {
                   'Refactoring Praktikum 3 • Redux Store & Reducers • Thunk Middleware • StoreConnector • Unidirectional Data Flow • Reactive UI',
               icon: Icons.account_tree_outlined,
               isCompleted: true,
-              badgeText: 'Aktif / Baru',
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const Praktikum4Root(),
+                  ),
+                );
+              },
+            ),
+
+            const SizedBox(height: 16),
+
+            // Card Praktikum 5
+            _buildModuleCard(
+              context,
+              number: '05',
+              title: 'Advance UI/UX',
+              subtitle:
+                  'Material 3 • Responsive & Adaptive • Slivers • Animations • CustomPainter • Micro Interactions',
+              icon: Icons.design_services_outlined,
+              isCompleted: true,
+              badgeText: 'Baru',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Praktikum5Menu(),
                   ),
                 );
               },

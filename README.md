@@ -13,7 +13,8 @@ Aplikasi ini menggunakan arsitektur **Modular Portal Hub**, sehingga setiap modu
 | **Modul 02** | **State & Data Management Review** (`setState`, Model, JSON, Local Storage) | ✅ **Selesai** |
 | **Modul 03** | **REST API & Integration Review** (Dio HTTP, Directus BaaS, CRUD Products) | ✅ **Selesai** |
 | **Modul 04** | **Advance State Management (Redux)** (Redux Store, Thunk, Pure Reducers, StoreConnector) | ✅ **Selesai** |
-| **Modul 05+** | *Modul lanjutan semester Pemrograman Mobile 2* | ⏳ *Upcoming* |
+| **Modul 05** | **Advance UI/UX** (Material 3, Layouts, Animations, Slivers, CustomPainter, Micro Interactions) | ✅ **Selesai** |
+| **Modul 06+** | *Modul lanjutan semester Pemrograman Mobile 2* | ⏳ *Upcoming* |
 
 ---
 
@@ -61,6 +62,20 @@ Refactoring menyeluruh dari Praktikum 3 dengan memisahkan Business Logic dan Sta
 
 ---
 
+### 📌 Modul 05 — Advance UI/UX
+Eksplorasi mendalam mengenai antarmuka pengguna (UI) dan pengalaman pengguna (UX) tingkat lanjut di Flutter, mencakup 25 percobaan komprehensif:
+- **Material 3 & Design System**: Implementasi `ColorScheme`, typography, dan komponen UI modern.
+- **Responsive & Adaptive UI**: Penggunaan `LayoutBuilder`, `MediaQuery`, `NavigationRail`, dan `NavigationBar` untuk menyesuaikan tampilan di berbagai ukuran layar.
+- **Advanced Layout & Scrolling**: Eksplorasi `Stack`, `Wrap`, `Expanded`, serta implementasi scrolling kompleks menggunakan `CustomScrollView` dan `Slivers`.
+- **Animations**: 
+  - *Implicit Animation* (`AnimatedContainer`, `AnimatedOpacity`)
+  - *Explicit Animation* (`AnimationController`, `Tween`)
+  - *Page Transitions* & *Hero Animations*
+- **Visual Effects & CustomPainter**: Pembuatan grafik kustom dengan `Canvas`, efek blur (`BackdropFilter`), dan transformasi visual (`Transform`, `Opacity`).
+- **Micro Interactions & Feedback**: Implementasi gesture, state UI (Loading, Empty, Error, Success), Skeleton Loading (Shimmer), dan interaksi detail pada komponen.
+
+---
+
 ## 📂 Struktur Project
 
 ```text
@@ -94,6 +109,14 @@ lib/
     │   └── detail_product_redux_screen.dart # Detail & Delete thunk
     └── widgets/
         └── redux_badge.dart           # Visual indicator arsitektur Redux
+├── praktikum5/                        # Modul Advance UI/UX
+│   ├── praktikum5_menu.dart           # Menu utama daftar 25 percobaan UI/UX
+│   └── screens/                       # Kumpulan screen percobaan UI/UX
+│       ├── basic_ui_screens.dart      # Material 3, Layout, Responsive, Adaptive, Sliver
+│       ├── interaction_screens.dart   # Feedback, Gesture, Interactive, Form, Loading
+│       ├── animation_screens.dart     # Implicit, Explicit, Curves, Transition, Hero
+│       ├── advanced_ui_screens.dart   # Skeleton, Theme, Custom Widget, CustomPainter, Clip, Transform, Accessibility
+│       └── state_gallery_screens.dart # UI State, Micro Interaction, Widget Gallery
 ```
 
 ---
